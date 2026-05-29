@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>まちサポ都城 — サイト構成プレビュー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hannari&display=swap" rel="stylesheet">
+<style>
+  /* ===== カラー変数 ===== */
+  :root {
+    --orange: #F07828;
+    --green:  #7CA020;
+    --green-dark: #5C7A18;
+    --text:   #2C2C2C;
+    --gray:   #F5F5F0;
+    --white:  #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hannari', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    color: var(--text);
+    letter-spacing: 0.08em;
+  }
+
+  h1, h2, h3, .section-heading, .hero h1 {
+    font-family: 'Hannari', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    font-weight: normal;
+    letter-spacing: 0.12em;
+  }
+
+  /* ===== セクションラベル（プレビュー用） ===== */
+  .section-label {
+    background: #222;
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: .1em;
+    padding: 4px 12px;
+    display: inline-block;
+  }
+
+  /* ===== ① ヘッダー ===== */
+  header {
+    background: var(--white);
+    border-bottom: 3px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-icon {
+    height: 56px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+  .logo-typo {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: .2s;
+    line-height: 1;
+  }
+  nav a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+  .nav-contact {
+    background: var(--orange);
+    color: #fff !important;
+    padding: 10px 20px !important;
+    border-radius: 4px;
+    border-bottom: none !important;
+    line-height: 1 !important;
+  }
+
+  /* ===== ② ヒーロー ===== */
+  .hero {
+    background: url('top.jpg') center center / cover no-repeat;
+    color: #fff;
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+  }
+  .hero h1 {
+    font-size: 42px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,.4);
+  }
+  .hero p {
+    font-size: 18px;
+    opacity: .9;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== ③ 事業内容 ===== */
+  .services {
+    background: var(--white);
+    padding: 70px 40px;
+    text-align: center;
+  }
+  .section-title {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    font-size: 14px;
+    padding: 4px 18px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+    letter-spacing: .08em;
+  }
+  .section-heading {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--text);
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .service-card {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 32px 24px;
+    border-top: 4px solid var(--orange);
+    transition: .2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+  .service-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
+  .service-card p  { font-size: 13px; color: #666; line-height: 1.6; }
+
+  /* ===== ④ お知らせ ===== */
+  .news {
+    background: var(--gray);
+    padding: 70px 40px;
+  }
+  .news-inner { max-width: 800px; margin: 0 auto; }
+  .news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .more-link {
+    color: var(--orange);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--orange);
+    padding-bottom: 1px;
+  }
+  .news-list { list-style: none; }
+  .news-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .news-date { color: #888; font-size: 13px; white-space: nowrap; }
+  .news-cat {
+    background: var(--green);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .news-list a { color: var(--text); text-decoration: none; font-size: 14px; }
+  .news-list a:hover { color: var(--orange); }
+
+  /* ===== ⑤ アクセス ===== */
+  .access {
+    background: var(--white);
+    padding: 70px 40px;
+  }
+  .access-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .access-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+  .access-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .access-label {
+    color: var(--orange);
+    font-weight: 700;
+    white-space: nowrap;
+    min-width: 50px;
+  }
+  .map-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #e8e8e8;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #888;
+    font-size: 14px;
+    border: 2px dashed #ccc;
+  }
+  .map-icon { font-size: 40px; }
+
+  /* ===== ⑥ フッター ===== */
+  footer {
+    background: var(--green-dark);
+    color: rgba(255,255,255,.85);
+    padding: 48px 40px 24px;
+  }
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand .logo-text { color: #fff; font-size: 20px; }
+  .footer-brand p { font-size: 13px; margin-top: 10px; line-height: 1.8; opacity: .8; }
+  .footer-nav h4 { font-size: 13px; font-weight: 700; color: var(--orange); margin-bottom: 12px; letter-spacing: .06em; }
+  .footer-nav ul { list-style: none; }
+  .footer-nav li { margin-bottom: 8px; }
+  .footer-nav a { color: rgba(255,255,255,.75); text-decoration: none; font-size: 13px; }
+  .footer-nav a:hover { color: #fff; }
+  .footer-copy {
+    border-top: 1px solid rgba(255,255,255,.15);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    opacity: .6;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ===== オレンジ帯アクセント ===== */
+  .stripe {
+    height: 6px;
+    background: linear-gradient(90deg, var(--orange) 50%, var(--green) 50%);
+  }
+</style>
+</head>
+<body>
+
+<!-- ==============================
+     ① ヘッダー
+============================== -->
+<div class="section-label">① ヘッダー（全ページ共通）</div>
+<header>
+  <div class="logo">
+    <img src="SVG/icon.svg" alt="" class="logo-icon">
+    <img src="SVG/typography.svg" alt="まちサポ都城" class="logo-typo">
+  </div>
+  <nav>
+    <a href="#">ホーム</a>
+    <a href="#">事業内容</a>
+    <a href="#">お知らせ</a>
+    <a href="#">アクセス</a>
+    <a href="#" class="nav-contact">お問い合わせ</a>
+  </nav>
+</header>
+<div class="stripe"></div>
+
+<!-- ==============================
+     ② ヒーローセクション
+============================== -->
+<div class="section-label">② ヒーロー（メインビジュアル）</div>
+<section class="hero">
+  <h1>買い物やお困りごとのある方々を<br>サポートします。</h1>
+  <p>宮崎県都城市を拠点に、地域の皆さまの暮らしを身近でお手伝いします。</p>
+</section>
+<div class="stripe"></div>
+
+<!-- ==============================
+     ③ 事業内容セクション
+============================== -->
+<div class="section-label">③ 事業内容セクション</div>
+<section class="services">
+  <span class="section-title">事業内容</span>
+  <h2 class="section-heading">まちサポ都城の4つのサービス</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">👴</span>
+      <h3>高齢者福祉サポート</h3>
+      <p>高齢者の日常生活をサポートし、安心して暮らせる地域づくりを支援します。</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🚚</span>
+      <h3>移動販売事業</h3>
+      <p>買い物が不便な地域へ直接お届け。食料品・生活必需品を移動販売します。</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🛒</span>
+      <h3>食品・飲料販売</h3>
+      <p>食料品、飲料品、お酒など、毎日の食生活に必要な商品を取り揃えています。</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🧴</span>
+      <h3>日用品販売</h3>
+      <p>日用雑貨・生活必需品など、くらしに必要なアイテムをご提供します。</p>
+    </div>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<!-- ==============================
+     ④ お知らせセクション
+============================== -->
+<div class="section-label">④ お知らせセクション（WordPressの投稿一覧）</div>
+<section class="news">
+  <div class="news-inner">
+    <div class="news-header">
+      <div>
+        <span class="section-title">お知らせ</span>
+        <h2 class="section-heading" style="margin-bottom:0">最新情報</h2>
+      </div>
+      <a href="#" class="more-link">一覧を見る →</a>
+    </div>
+    <ul class="news-list">
+      <li>
+        <span class="news-date">2026.05.10</span>
+        <span class="news-cat">お知らせ</span>
+        <a href="#">移動販売の新ルートが追加されました</a>
+      </li>
+      <li>
+        <span class="news-date">2026.04.25</span>
+        <span class="news-cat">イベント</span>
+        <a href="#">地域交流イベントを開催します（5月20日）</a>
+      </li>
+      <li>
+        <span class="news-date">2026.04.01</span>
+        <span class="news-cat">お知らせ</span>
+        <a href="#">ホームページをリニューアルしました</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<!-- ==============================
+     ⑤ アクセスマップセクション
+============================== -->
+<div class="section-label">⑤ アクセスマップセクション</div>
+<section class="access">
+  <div style="text-align:center; margin-bottom:40px;">
+    <span class="section-title">アクセス</span>
+    <h2 class="section-heading">所在地・アクセス</h2>
+  </div>
+  <div class="access-inner">
+    <div>
+      <!-- Google Maps（実際は iframe を埋め込む） -->
+      <div class="map-placeholder">
+        <span class="map-icon">🗺️</span>
+        <span>Google マップ 埋め込みエリア</span>
+        <span style="font-size:12px">都城市高城町穂満坊3020-9</span>
+      </div>
+    </div>
+    <div class="access-info">
+      <h3>まちサポ都城株式会社</h3>
+      <div class="access-row">
+        <span class="access-label">店舗住所</span>
+        <span>〒885-1202<br>宮崎県都城市高城町穂満坊3020-9</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">TEL</span>
+        <span>0986-58-3667</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">携帯</span>
+        <span>070-6423-1331</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">Web</span>
+        <span>https://machisapo-m.jp</span>
+      </div>
+      <div class="access-row" style="margin-top:20px;">
+        <span class="access-label">本社住所</span>
+        <span>〒885-1205<br>宮崎県都城市高城町大井手2598-1</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<!-- ==============================
+     ⑥ フッター
+============================== -->
+<div class="section-label">⑥ フッター（全ページ共通）</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">まちサポ都城</span>
+      <p>
+        〒885-1202<br>
+        宮崎県都城市高城町穂満坊3020-9<br>
+        TEL：0986-58-3667
+      </p>
+    </div>
+    <div class="footer-nav">
+      <h4>メニュー</h4>
+      <ul>
+        <li><a href="#">ホーム</a></li>
+        <li><a href="#">事業内容</a></li>
+        <li><a href="#">お知らせ</a></li>
+        <li><a href="#">アクセス</a></li>
+      </ul>
+    </div>
+    <div class="footer-nav">
+      <h4>その他</h4>
+      <ul>
+        <li><a href="#">お問い合わせ</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 まちサポ都城株式会社. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
